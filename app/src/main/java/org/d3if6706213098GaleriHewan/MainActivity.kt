@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import org.d3if6706213098GaleriHewan.databinding.ActivityMainBinding
 import org.d3if6706213098GaleriHewan.model.HasilBmi
 import org.d3if6706213098GaleriHewan.model.KategoriBmi
@@ -12,6 +13,9 @@ import org.d3if6706213098GaleriHewan.model.KategoriBmi
 class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
 
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this)[MainViewModel::class.java]
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -40,28 +44,12 @@ class MainActivity : AppCompatActivity(){
             Toast.makeText(this, R.string.gender_invalid, Toast.LENGTH_LONG).show()
             return
         }
-        val result = hitungBmi(
+        val result = viewModel.hitungBmi(
             berat.toFloat(),
             tinggi.toFloat(),
             selectedId == R.id.priaRadioButton
         )
         showResult(result)
-    }
-    private fun getKategori(bmi: Float, isMale: Boolean): KategoriBmi {
-        val kategori = if (isMale) {
-            when {
-                bmi < 20.5 -> KategoriBmi.KURUS
-                bmi >= 27.0 -> KategoriBmi.GEMUK
-                else -> KategoriBmi.IDEAL
-            }
-        } else {
-            when {
-                bmi < 18.5 -> KategoriBmi.KURUS
-                bmi >= 25.0 -> KategoriBmi.GEMUK
-                else -> KategoriBmi.IDEAL
-            }
-        }
-        return kategori
     }
 
     private fun getKategoriLabel(kategori: KategoriBmi): String {
@@ -79,13 +67,6 @@ class MainActivity : AppCompatActivity(){
         binding.bmiTextView.text = ""
         binding.kategoriTextView.text = ""
         binding.radioGroup.clearCheck()
-    }
-
-    private fun hitungBmi(berat: Float, tinggi: Float, isMale: Boolean): HasilBmi {
-        val tinggiCm = tinggi / 100
-        val bmi = berat / (tinggiCm * tinggiCm)
-        val kategori = getKategori(bmi, isMale)
-        return HasilBmi(bmi, kategori)
     }
 
     private fun showResult(result: HasilBmi) {
