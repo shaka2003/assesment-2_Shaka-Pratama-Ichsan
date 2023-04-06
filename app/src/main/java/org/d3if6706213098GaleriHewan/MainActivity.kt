@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import org.d3if6706213098GaleriHewan.databinding.ActivityMainBinding
+import org.d3if6706213098GaleriHewan.model.HasilBmi
 import org.d3if6706213098GaleriHewan.model.KategoriBmi
 
 class MainActivity : AppCompatActivity(){
@@ -34,18 +35,17 @@ class MainActivity : AppCompatActivity(){
             Toast.makeText(this, R.string.tinggi_invalid, Toast.LENGTH_LONG).show()
             return
         }
-        val tinggiCm = tinggi.toFloat() / 100
         val selectedId = binding.radioGroup.checkedRadioButtonId
         if (selectedId == -1) {
             Toast.makeText(this, R.string.gender_invalid, Toast.LENGTH_LONG).show()
             return
         }
-        val isMale = selectedId == R.id.priaRadioButton
-        val bmi = berat.toFloat() / (tinggiCm * tinggiCm)
-        val kategori = getKategori(bmi, isMale)
-        binding.bmiTextView.text = getString(R.string.bmi_x, bmi)
-        binding.kategoriTextView.text = getString(R.string.kategori_x,
-            getKategoriLabel(kategori))
+        val result = hitungBmi(
+            berat.toFloat(),
+            tinggi.toFloat(),
+            selectedId == R.id.priaRadioButton
+        )
+        showResult(result)
     }
     private fun getKategori(bmi: Float, isMale: Boolean): KategoriBmi {
         val kategori = if (isMale) {
@@ -79,5 +79,18 @@ class MainActivity : AppCompatActivity(){
         binding.bmiTextView.text = ""
         binding.kategoriTextView.text = ""
         binding.radioGroup.clearCheck()
+    }
+
+    private fun hitungBmi(berat: Float, tinggi: Float, isMale: Boolean): HasilBmi {
+        val tinggiCm = tinggi / 100
+        val bmi = berat / (tinggiCm * tinggiCm)
+        val kategori = getKategori(bmi, isMale)
+        return HasilBmi(bmi, kategori)
+    }
+
+    private fun showResult(result: HasilBmi) {
+        binding.bmiTextView.text = getString(R.string.bmi_x, result.bmi)
+        binding.kategoriTextView.text = getString(R.string.kategori_x,
+            getKategoriLabel(result.kategori))
     }
 }
