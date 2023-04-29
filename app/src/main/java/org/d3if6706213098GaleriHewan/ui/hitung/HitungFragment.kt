@@ -70,12 +70,6 @@ class HitungFragment : Fragment() {
                 .actionHitungFragmentToSaranFragment(it))
             viewModel.selesaiNavigasi()
         })
-
-        viewModel.data.observe(viewLifecycleOwner, {
-            if (it == null) return@observe
-            Log.d("HitungFragment", "Data tersimpan. ID = ${it.id}")
-        })
-
     }
 
     private fun shareData() {
