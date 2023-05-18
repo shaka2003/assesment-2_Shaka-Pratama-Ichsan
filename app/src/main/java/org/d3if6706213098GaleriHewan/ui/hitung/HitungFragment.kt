@@ -10,6 +10,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -22,6 +23,8 @@ import org.d3if6706213098GaleriHewan.model.KategoriBmi
 
 class HitungFragment : Fragment() {
     private lateinit var binding: FragmentHitungBinding
+
+    val aktifitas = arrayOf("BMR","Sangat Jarang Olahraga", "Jarang Olahraga (1-2 kali seminggu)", "Olahraga Normal (2-3 kali seminggu)", "Sering Olahraga (4-5 kali seminggu)", "Sangat Sering Olahraga (2 kali sehari)")
 
     private val viewModel: HitungViewModel by lazy {
         val db = BmiDb.getInstance(requireContext())
@@ -79,8 +82,8 @@ class HitungFragment : Fragment() {
         else
             getString(R.string.wanita)
         val message = getString(R.string.bagikan_template,
-            binding.beratEditText.text,
-            binding.tinggiEditText.text,
+            binding.beratInp.text,
+            binding.tinggiBadanInp.text,
             gender,
             binding.bmiTextView.text,
             binding.kategoriTextView.text
@@ -94,12 +97,12 @@ class HitungFragment : Fragment() {
     }
 
     private fun hitungBmi() {
-        val berat = binding.beratEditText.text.toString()
+        val berat = binding.beratInp.text.toString()
         if (TextUtils.isEmpty(berat)) {
             Toast.makeText(context, R.string.berat_invalid, Toast.LENGTH_LONG).show()
             return
         }
-        val tinggi = binding.tinggiEditText.text.toString()
+        val tinggi = binding.tinggiBadanInp.text.toString()
         if (TextUtils.isEmpty(tinggi)) {
             Toast.makeText(context, R.string.tinggi_invalid, Toast.LENGTH_LONG).show()
             return
@@ -126,18 +129,20 @@ class HitungFragment : Fragment() {
     }
 
     private fun reset () {
-        binding.beratEditText.text.clear()
-        binding.tinggiEditText.text.clear()
+        binding.beratInp.setText("")
+        binding.tinggiBadanInp.setText("")
+        binding.umurInp.setText("")
         binding.bmiTextView.text = ""
         binding.kategoriTextView.text = ""
         binding.radioGroup.clearCheck()
+        binding.buttonGroup.visibility = View.INVISIBLE
     }
 
     private fun showResult(result: HasilBmi?) {
         if (result == null) return
         binding.bmiTextView.text = getString(R.string.bmi_x, result.bmi)
-        binding.kategoriTextView.text = getString(R.string.kategori_x,
-            getKategoriLabel(result.kategori))
+//        binding.kategoriTextView.text = getString(R.string.kategori_x,
+//            getKategoriLabel(result.kategori))
         binding.buttonGroup.visibility = View.VISIBLE
     }
 }
