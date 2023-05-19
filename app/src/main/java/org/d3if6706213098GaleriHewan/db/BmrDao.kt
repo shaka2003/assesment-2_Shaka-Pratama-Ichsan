@@ -5,15 +5,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 
+@Dao
 interface BmrDao {
-    @Dao
-    interface BmiDao {
-        @Insert
-        fun insert(bmr: BmrEntity)
-        @Query("SELECT * FROM bmi ORDER BY id DESC")
-        fun getLastBmi(): LiveData<List<BmrEntity>>
+    @Insert
+    fun insert(bmr: BmrEntity)
+    @Query("SELECT * FROM bmi ORDER BY id DESC")
+    fun getLastBmi(): LiveData<List<BmrEntity>>
 
-        @Query("DELETE FROM bmi")
-        fun getAll(): List<BmrEntity>
-    }
+    @Query("DELETE FROM bmi")
+    fun getAll(): List<BmrEntity>
 }

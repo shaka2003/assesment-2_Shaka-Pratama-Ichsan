@@ -24,19 +24,19 @@ class SaranFragment : Fragment() {
         val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
         when (kategori) {
             KategoriBmi.KURUS -> {
-                actionBar?.title = getString(R.string.judul_kurus)
-                binding.imageView.setImageResource(R.drawable.bmi_info)
-                binding.textView.text = getString(R.string.saran_kurus)
+                actionBar?.title = getString(R.string.judul_kalori)
+                binding.imageView.setImageResource(R.drawable.kalori)
+                binding.textView.text = getString(R.string.saran_kalori)
             }
             KategoriBmi.IDEAL -> {
-                actionBar?.title = getString(R.string.judul_ideal)
-                binding.imageView.setImageResource(R.drawable.bmi_info)
-                binding.textView.text = getString(R.string.saran_ideal)
+                actionBar?.title = getString(R.string.judul_kalori)
+                binding.imageView.setImageResource(R.drawable.kalori)
+                binding.textView.text = getString(R.string.saran_kalori)
             }
             KategoriBmi.GEMUK -> {
-                actionBar?.title = getString(R.string.judul_gemuk)
-                binding.imageView.setImageResource(R.drawable.bmi_info)
-                binding.textView.text = getString(R.string.saran_gemuk)
+                actionBar?.title = getString(R.string.judul_kalori)
+                binding.imageView.setImageResource(R.drawable.kalori)
+                binding.textView.text = getString(R.string.saran_kalori)
             }
         }
     }

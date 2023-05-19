@@ -18,14 +18,14 @@ import org.d3if6706213098GaleriHewan.model.hitungBmr
 
 class HitungViewModel(private val db: BmiDao) : ViewModel() {
     private val hasilBmi = MutableLiveData<HasilBmi?>()
-    private val hasilBmr = MutableLiveData<HasilBmr?>()
     private val navigasi = MutableLiveData<KategoriBmi?>()
 
-    fun hitungBmi(berat: Float, tinggi: Float, isMale: Boolean)  {
+    fun hitungBmi(berat: Float, tinggi: Float, isMale: Boolean, umur: Float)  {
         val dataBmi = BmiEntity(
             berat = berat,
             tinggi = tinggi,
             isMale = isMale,
+            umur = umur
         )
         hasilBmi.value = dataBmi.hitungBmi()
 
@@ -36,23 +36,6 @@ class HitungViewModel(private val db: BmiDao) : ViewModel() {
             }
         }
     }
-
-//    fun hitungBmr(berat: Float, tinggi: Float, umur: Float, isMale: Boolean)  {
-//        val dataBmr = BmrEntity(
-//            berat = berat,
-//            tinggi = tinggi,
-//            umur = umur,
-//            isMale = isMale,
-//        )
-//        hasilBmr.value = dataBmr.hitungBmr()
-//
-//
-//        viewModelScope.launch {
-//            withContext(Dispatchers.IO) {
-//                db.insert(dataBmr)
-//            }
-//        }
-//    }
 
     fun getHasilBmi(): LiveData<HasilBmi?> = hasilBmi
 

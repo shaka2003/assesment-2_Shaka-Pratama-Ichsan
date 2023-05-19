@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Assesment 2</string>
-    <string name="intro">BMI, atau Body Mass Index merupakan cara untuk menentukan apakah berat badanmu ideal atau tidak. Cobalah sekarang!</string>
+    <string name="app_name">Hitung Kalori Harian</string>
+    <string name="intro">Apa itu TDEE? TDEE atau Total Daily Energy Expenditure adalah rata-rata energi yang dibakar dalam satu hari.</string>
     <string name="berat_badan">Berat badan (kg)</string>
     <string name="tinggi_badan">Tinggi badan (cm)</string>
     <string name="jenis_kelamin">Jenis kelamin</string>
     <string name="pria">Pria</string>
     <string name="wanita">Wanita</string>
     <string name="hitung">Hitung</string>
-    <string name="bmi_x">BMI: %1$.2f</string>
+    <string name="bmi_x">Kebutuhan Kalori Harian Anda Adalah: %1$.2f</string>
     <string name="kurus">Kurus</string>
     <string name="ideal">Ideal</string>
     <string name="gemuk">Gemuk</string>
@@ -30,7 +30,7 @@
 cm\nJenis kelamin: %3$s\n\n%4$s\n%5$s</string>
     <string name="belum_ada_data">Belum ada data</string>
     <string name="histori">Histori</string>
-    <string name="hasil_x">BMI: %1$.2f - %2$s</string>
+    <string name="hasil_x">KALORI: %1$.2f</string>
     <string name="data_x">BB: %1$.1f - TB: %2$.1f - %3$s</string>
     <string name="hapus_histori">Hapus Histori</string>
     <string name="konfirmasi_hapus">Hapus semua histori?</string>
@@ -42,4 +42,13 @@ cm\nJenis kelamin: %3$s\n\n%4$s\n%5$s</string>
     <string name="result">"Kebutuhan Kalori Harian Anda Adalah: %1$.2f"</string>
     <string name="bmr_x">Kebutuhan Kalori Harian Anda Adalah: %1$.2f</string>
     <string name="aktifitas">Aktifitas</string>
+
+
+    <string name="sangat_jarang">Sangat Jarang Olahraga: %1$.2f</string>
+    <string name="jarang">Jarang Olahraga (1-2 kali seminggu): %1$.2f</string>
+    <string name="normal">Olahraga Normal (2-3 kali seminggu): %1$.2f</string>
+    <string name="sering">Sering Olahraga (4-5 kali seminggu): %1$.2f</string>
+    <string name="sangat_sering">Sangat Sering Olahraga (2 kali sehari): %1$.2f</string>
+    <string name="saran_kalori">Untuk menjaga asupan kalori, penting untuk menghitung kebutuhan kalori harian Anda, memilih makanan bergizi dan porsi yang tepat, serta mengurangi konsumsi makanan olahan dan minuman manis. Perbanyaklah makan sayuran, minum air yang cukup, dan pilih metode memasak yang sehat. Selain itu, perhatikan juga cemilan yang dikonsumsi dan tetap aktif dengan berolahraga secara teratur. Dengan menggabungkan langkah-langkah ini, Anda dapat menjaga asupan kalori Anda dan mempertahankan berat badan yang sehat.</string>
+    <string name="judul_kalori">Cara Menjaga Asupan Kalori</string>
 </resources>

@@ -24,13 +24,12 @@ import org.d3if6706213098GaleriHewan.model.KategoriBmi
 class HitungFragment : Fragment() {
     private lateinit var binding: FragmentHitungBinding
 
-    val aktifitas = arrayOf("BMR","Sangat Jarang Olahraga", "Jarang Olahraga (1-2 kali seminggu)", "Olahraga Normal (2-3 kali seminggu)", "Sering Olahraga (4-5 kali seminggu)", "Sangat Sering Olahraga (2 kali sehari)")
-
     private val viewModel: HitungViewModel by lazy {
         val db = BmiDb.getInstance(requireContext())
         val factory = HitungViewModelFactory(db.dao)
         ViewModelProvider(this, factory)[HitungViewModel::class.java]
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentHitungBinding.inflate(layoutInflater, container, false)
         setHasOptionsMenu(true)
@@ -97,6 +96,11 @@ class HitungFragment : Fragment() {
     }
 
     private fun hitungBmi() {
+        val umur = binding.beratInp.text.toString()
+        if (TextUtils.isEmpty(umur)) {
+            Toast.makeText(context, R.string.umur_invalid, Toast.LENGTH_LONG).show()
+            return
+        }
         val berat = binding.beratInp.text.toString()
         if (TextUtils.isEmpty(berat)) {
             Toast.makeText(context, R.string.berat_invalid, Toast.LENGTH_LONG).show()
@@ -115,7 +119,8 @@ class HitungFragment : Fragment() {
         viewModel.hitungBmi(
             berat.toFloat(),
             tinggi.toFloat(),
-            selectedId == R.id.priaRadioButton
+            selectedId == R.id.priaRadioButton,
+            umur.toFloat()
         )
     }
 
@@ -141,6 +146,11 @@ class HitungFragment : Fragment() {
     private fun showResult(result: HasilBmi?) {
         if (result == null) return
         binding.bmiTextView.text = getString(R.string.bmi_x, result.bmi)
+        binding.sangatJarang.text = getString(R.string.sangat_jarang, result.sangatJarang)
+        binding.jarang.text = getString(R.string.jarang, result.jarang)
+        binding.normal.text = getString(R.string.normal, result.normal)
+        binding.sering.text = getString(R.string.sering, result.sering)
+        binding.sangatSering.text = getString(R.string.sangat_sering, result.sangatSering)
 //        binding.kategoriTextView.text = getString(R.string.kategori_x,
 //            getKategoriLabel(result.kategori))
         binding.buttonGroup.visibility = View.VISIBLE
