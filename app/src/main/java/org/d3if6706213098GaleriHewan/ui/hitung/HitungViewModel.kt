@@ -9,12 +9,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.d3if6706213098GaleriHewan.db.BmiDao
 import org.d3if6706213098GaleriHewan.db.BmiEntity
-import org.d3if6706213098GaleriHewan.db.BmrEntity
 import org.d3if6706213098GaleriHewan.model.HasilBmi
 import org.d3if6706213098GaleriHewan.model.KategoriBmi
-import org.d3if6706213098GaleriHewan.model.HasilBmr
 import org.d3if6706213098GaleriHewan.model.hitungBmi
-import org.d3if6706213098GaleriHewan.model.hitungBmr
 
 class HitungViewModel(private val db: BmiDao) : ViewModel() {
     private val hasilBmi = MutableLiveData<HasilBmi?>()

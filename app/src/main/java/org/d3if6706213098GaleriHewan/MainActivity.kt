@@ -1,8 +1,6 @@
 package org.d3if6706213098GaleriHewan
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController

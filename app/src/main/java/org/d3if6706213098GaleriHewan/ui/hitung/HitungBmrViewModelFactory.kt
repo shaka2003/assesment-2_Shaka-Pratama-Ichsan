@@ -2,7 +2,6 @@ package org.d3if6706213098GaleriHewan.ui.hitung
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import org.d3if6706213098GaleriHewan.db.BmiDao
 import org.d3if6706213098GaleriHewan.db.BmrDao
 
 class HitungBmrViewModelFactory (

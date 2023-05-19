@@ -1,5 +1,6 @@
 package org.d3if6706213098GaleriHewan.ui.histori
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -53,6 +54,7 @@ class HistoriAdapter :
         private val dateFormatter = SimpleDateFormat("dd MMMM yyyy",
             Locale("id", "ID")
         )
+        @SuppressLint("StringFormatMatches")
         fun bind(item: BmiEntity) = with(binding) {
             val hasilBmi = item.hitungBmi()
             kategoriTextView.text = hasilBmi.kategori.toString().substring(0, 1)

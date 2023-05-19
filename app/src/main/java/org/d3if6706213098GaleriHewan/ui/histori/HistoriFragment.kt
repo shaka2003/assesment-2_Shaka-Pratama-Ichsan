@@ -1,7 +1,6 @@
 package org.d3if6706213098GaleriHewan.ui.histori
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
