@@ -6,6 +6,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -17,12 +20,25 @@ import org.d3if6706213098GaleriHewan.model.Makanan
 import org.d3if6706213098GaleriHewan.model.hitungBmi
 import org.d3if6706213098GaleriHewan.network.ApiStatus
 import org.d3if6706213098GaleriHewan.network.MakananApi
+import org.d3if6706213098GaleriHewan.network.UpdateWorker
+import java.util.concurrent.TimeUnit
 
 class HitungViewModel(private val db: BmiDao) : ViewModel() {
     private val hasilBmi = MutableLiveData<HasilBmi?>()
     private val navigasi = MutableLiveData<KategoriBmi?>()
     private val data = MutableLiveData<List<Makanan>>()
     private val status = MutableLiveData<ApiStatus>()
+
+    fun scheduleUpdater(app: Application) {
+        val request = OneTimeWorkRequestBuilder<UpdateWorker>()
+            .setInitialDelay(5, TimeUnit.SECONDS)
+            .build()
+        WorkManager.getInstance(app).enqueueUniqueWork(
+            UpdateWorker.WORK_NAME,
+            ExistingWorkPolicy.REPLACE,
+            request
+        )
+    }
 
 
     init {
