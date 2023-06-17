@@ -51,4 +51,7 @@ cm\nJenis kelamin: %3$s\n\n%4$s\n%5$s</string>
     <string name="sangat_sering">Sangat Sering Olahraga (2 kali sehari): %1$.2f</string>
     <string name="saran_kalori">Untuk menjaga asupan kalori, penting untuk menghitung kebutuhan kalori harian Anda, memilih makanan bergizi dan porsi yang tepat, serta mengurangi konsumsi makanan olahan dan minuman manis. Perbanyaklah makan sayuran, minum air yang cukup, dan pilih metode memasak yang sehat. Selain itu, perhatikan juga cemilan yang dikonsumsi dan tetap aktif dengan berolahraga secara teratur. Dengan menggabungkan langkah-langkah ini, Anda dapat menjaga asupan kalori Anda dan mempertahankan berat badan yang sehat.</string>
     <string name="judul_kalori">Cara Menjaga Asupan Kalori</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="koneksi_error">Koneksi Error</string>
 </resources>

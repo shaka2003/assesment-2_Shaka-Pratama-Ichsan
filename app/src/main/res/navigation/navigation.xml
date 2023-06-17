@@ -28,6 +28,9 @@
         <argument
             android:name="kategori"
             app:argType="org.d3if6706213098GaleriHewan.model.KategoriBmi" />
+        <action
+            android:id="@+id/action_saranFragment2_to_dataMakananFragment"
+            app:destination="@id/dataMakananFragment" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"
@@ -39,4 +42,9 @@
         android:name="org.d3if6706213098GaleriHewan.ui.histori.HistoriFragment"
         android:label="@string/histori"
         tools:layout="@layout/fragment_histori" />
+    <fragment
+        android:id="@+id/dataMakananFragment"
+        android:name="org.d3if6706213098GaleriHewan.makanan.DataMakananFragment"
+        android:label="fragment_data_makanan"
+        tools:layout="@layout/fragment_data_makanan" />
 </navigation>

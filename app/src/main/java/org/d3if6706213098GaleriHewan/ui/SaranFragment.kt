@@ -1,15 +1,19 @@
 package org.d3if6706213098GaleriHewan.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import org.d3if6706213098GaleriHewan.R
 import org.d3if6706213098GaleriHewan.databinding.FragmentSaranBinding
+import org.d3if6706213098GaleriHewan.makanan.MainActivityMakanan
 import org.d3if6706213098GaleriHewan.model.KategoriBmi
+
 
 class SaranFragment : Fragment() {
     private lateinit var binding: FragmentSaranBinding
@@ -43,6 +47,10 @@ class SaranFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         updateUI(args.kategori)
+
+        binding.btnLihatSaran.setOnClickListener{
+            findNavController().navigate(R.id.dataMakananFragment)
+        }
     }
 
 }

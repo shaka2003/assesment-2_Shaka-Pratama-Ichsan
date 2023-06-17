@@ -297,6 +297,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/saranButton"
             app:layout_constraintTop_toTopOf="@+id/saranButton" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/saranButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sering"
+            tools:listitem="@layout/fragment_data_makanan" />
         <androidx.constraintlayout.widget.Group
             android:id="@+id/buttonGroup"
             android:layout_width="wrap_content"
